@@ -1,12 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://unpkg.com/onsenui/css/onsenui.css">
+    <link rel="stylesheet" href="https://unpkg.com/onsenui/css/onsen-css-components.min.css">
+    <script src="https://unpkg.com/onsenui/js/onsenui.min.js"></script>
     <title>Quiz I</title>
 </head>
+
 <body>
-    
+    <ons-page id="helloworld-page">
+        <ons-toolbar>
+            <div class="left">
+                <ons-toolbar-button icon="md-face"></ons-toolbar-button>
+            </div>
+
+            <div class="center">Home</div>
+
+            <div class="right">
+                <ons-toolbar-button icon="md-home"></ons-toolbar-button>
+
+            </div>
+
+        </ons-toolbar>
+       
+        <ons-tabbar swipeable position="auto">
+            <ons-tab page="tab1.html" label="HOME" icon="ion-home, material:md-home" badge="7" active>
+            </ons-tab>
+            <ons-tab page="tab2.html" label="CART" icon="fa-shopping-bag" active-icon="md-face">
+            </ons-tab>
+        </ons-tabbar>
+    </ons-page>
+    <template id="tab1.html">
+        <ons-page id="HOME">
+            <p style="text-align: center; margin-top: 10px;">
+                <ons-search-input placeholder="Search" onchange="ons.notification.alert('Searched for: ' + this.value)"></ons-search-input>
+            </p>
+        </ons-page>
+    </template>
+
+    <template id="tab2.html">
+        <ons-page id="CART">
+            <p style="text-align: center;">
+                This is the second page.
+            </p>
+        </ons-page>
+    </template>
 </body>
+<script>
+    document.addEventListener('prechange', function (event) {
+        document.querySelector('ons-toolbar .center')
+            .innerHTML = event.tabItem.getAttribute('label');
+    });
+</script>
+
 </html>
